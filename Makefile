@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: juwong <juwong@student.42.fr>              +#+  +:+       +#+         #
+#    By: xzhu <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/06/20 11:00:07 by juwong            #+#    #+#              #
-#    Updated: 2018/06/29 15:33:43 by juwong           ###   ########.fr        #
+#    Created: 2018/07/11 18:18:47 by xzhu              #+#    #+#              #
+#    Updated: 2018/07/11 18:23:13 by xzhu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,10 @@ NAME = libft.a
 OBJECT = $(SRC:.c=.o)
 CFLAGS = -Wall -Werror -Wextra \
 -I libft.h
-SRC = ft_putchar.c \
+GREEN=\033[0;32m
+BLUE=\033[0;34m
+RED=\033[0;31m
+SRC = 				ft_putchar.c \
 					ft_memset.c \
 					ft_putstr.c \
 					ft_putnbr.c \
@@ -71,23 +74,32 @@ SRC = ft_putchar.c \
 					ft_lstdel.c \
 					ft_lstadd.c \
 					ft_lstiter.c \
-					ft_lstmap.c
-					
+					ft_lstmap.c \
+					ft_lstaddback.c \
+					ft_lstsize.c \
+					ft_lstrev.c \
+					ft_lstsort.c \
+					ft_lstat.c
+
 
 .PHONY: all clean fclean re
 
-all: $(NAME)  
+all: $(NAME)
 
 $(NAME): $(OBJECT)
-	ar rc $(NAME) $(OBJECT)
-	ranlib $(NAME)
+	@ar rc $(NAME) $(OBJECT)
+	@ranlib $(NAME)
+	@echo "$(GREEN) ✓ Created libft.a"
+
 $(OBJECT): $(SRC)
 	@gcc $(CFLAGS) -c $(SRC)
 
-clean: 
-	rm -f $(OBJECT)
+clean:
+	@rm -f $(OBJECT)
+	@echo "$(BLUE) ✓ Removed .o files"
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
+	@echo "$(RED) ✓ Removed libft.a"
 
 re: fclean all
