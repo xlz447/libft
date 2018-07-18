@@ -14,6 +14,7 @@ NAME = libft.a
 OBJECT = $(SRC:.c=.o)
 CFLAGS = -Wall -Werror -Wextra \
 -I libft.h
+NOC=\033[0m
 GREEN=\033[0;32m
 BLUE=\033[0;34m
 RED=\033[0;31m
@@ -79,27 +80,27 @@ SRC = 				ft_putchar.c \
 					ft_lstsize.c \
 					ft_lstrev.c \
 					ft_lstsort.c \
-					ft_lstat.c
-
-
-.PHONY: all clean fclean re
+					ft_lstat.c \
+					ft_errorexit.c
 
 all: $(NAME)
 
 $(NAME): $(OBJECT)
 	@ar rc $(NAME) $(OBJECT)
 	@ranlib $(NAME)
-	@echo "$(GREEN) ✓ Created libft.a"
+	@echo "$(GREEN)LIBFT ✓ Created libft.a"
 
 $(OBJECT): $(SRC)
 	@gcc $(CFLAGS) -c $(SRC)
 
 clean:
 	@rm -f $(OBJECT)
-	@echo "$(BLUE) ✓ Removed .o files"
+	@echo "$(BLUE)LIBFT ✓ Removed .o files$(NOC)"
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo "$(RED) ✓ Removed libft.a"
+	@echo "$(RED)LIBFT ✓ Removed libft.a$(NOC)"
 
 re: fclean all
+
+.PHONY: all clean fclean re

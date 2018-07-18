@@ -88,5 +88,6 @@ size_t			ft_lstsize(t_list *alst);
 void			ft_lstrev(t_list **alst);
 void			ft_lstsort(t_list **alst, int (*cmp)());
 t_list			*ft_lstat(t_list *alst, unsigned int nbr);
+void			ft_errorexit(char *messege);
 
 #endif
